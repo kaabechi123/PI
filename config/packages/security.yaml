@@ -1,0 +1,40 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email  # Users will log in using their email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            lazy: true
+            provider: app_user_provider
+            form_login:
+                login_path: login  # URL for the login form
+                check_path: login  # Symfony will handle authentication here
+                default_target_path: dashboard  # Default page after login
+                always_use_default_target_path: false
+                username_parameter: email
+                password_parameter: password
+            logout:
+                path: logout
+                target: login  # Redirect to login after logout
+            custom_authenticator: App\Security\AppAuthenticator
+
+
+
+    access_control:
+        - { path: ^/login, roles: PUBLIC_ACCESS }  # Login is accessible to everyone
+        - { path: ^/signup, roles: PUBLIC_ACCESS }  # Login is accessible to everyone
+        - { path: ^/admin, roles: ROLE_ADMIN }     # Admins can access /admin
+        - { path: ^/organisation, roles: ROLE_ORGANISATION } # Managers can access /organisation
+        - { path: ^/home, roles: ROLE_CLIENT }  # Users can access /home
+        - { path: ^/delivery, roles: ROLE_DELIVERY }          # can acces /
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY } # Force login for everything else
