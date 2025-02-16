@@ -1,4 +1,35 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+            {% for field in form %}
+                {% if field.vars.name != '_token' %}
+                    <div class="form-group mb-4">
+                        {{ form_label(field, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+
+                        {{ form_widget(field, {
+                            'attr': {
+                                'class': 'form-control' ~ (field.vars.errors|length > 0 ? ' is-invalid' : ''),
+                                'required': field.vars.required ? 'required' : ''
+                            }
+                        }) }}
+
+                        {# Affichage du message d'erreur si un champ est invalide #}
+                        {% if field.vars.errors|length > 0 %}
+                            <div class="invalid-feedback d-block">
+                                {{ field.vars.errors[0].message }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block shadow-sm mt-3">
+                {{ button_label|default('Enregistrer') }}
+            </button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
