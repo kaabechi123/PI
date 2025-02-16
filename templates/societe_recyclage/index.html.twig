@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des sociétés de recyclage{% endblock %}
+
+{% block body %}
+    <h1>Liste des sociétés de recyclage</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for societe in societes %}
+                <tr>
+                    <td>{{ societe.id }}</td>
+                    <td>{{ societe.nom }}</td>
+                    <td>
+                        <a href="{{ path('societe_recyclage_show', {'id': societe.id}) }}">Voir</a>
+                        <a href="{{ path('societe_recyclage_edit', {'id': societe.id}) }}">Éditer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('societe_recyclage_new') }}">Ajouter une société</a>
+{% endblock %}

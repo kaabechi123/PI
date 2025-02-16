@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la livraison{% endblock %}
+
+{% block body %}
+    <h1>Détails de la livraison</h1>
+    <p>ID: {{ livraison.id }}</p>
+    <p>Date: {{ livraison.date|date('Y-m-d H:i') }}</p>
+    <p>Société de recyclage: {{ livraison.societeRecyclage.nom }}</p>
+    <a href="{{ path('livraison_edit', {'id': livraison.id}) }}">Éditer</a>
+    <a href="{{ path('livraison_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livraisons{% endblock %}
+
+{% block body %}
+    <h1>Liste des livraisons</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Société de recyclage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livraison in livraisons %}
+                <tr>
+                    <td>{{ livraison.id }}</td>
+                    <td>{{ livraison.date|date('Y-m-d H:i') }}</td>
+                    <td>{{ livraison.societeRecyclage.id}}</td>
+                    <td>
+                        <a href="{{ path('livraison_show', {'id': livraison.id}) }}">Voir</a>
+                        <a href="{{ path('livraison_edit', {'id': livraison.id}) }}">Éditer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_livraison_new') }}">Ajouter une livraison</a>
+{% endblock %}

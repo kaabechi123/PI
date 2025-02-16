@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Sociétés</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Liste des Sociétés</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll"></th>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" class="checkItem"></td>
+                    <td>1</td>
+                    <td>Recycle</td>
+                    <td>Ariana</td>
+                    <td>recycle@gmail.com</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-secondary btn-sm">Copy</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="checkItem"></td>
+                    <td>2</td>
+                    <td>Recycle</td>
+                    <td>Ariana</td>
+                    <td>recycle@gmail.com</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-secondary btn-sm">Copy</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="checkItem"></td>
+                    <td>3</td>
+                    <td>Recycle</td>
+                    <td>Ariana</td>
+                    <td>recycle@gmail.com</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-secondary btn-sm">Copy</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="checkItem"></td>
+                    <td>4</td>
+                    <td>Recycle 1</td>
+                    <td>tunis</td>
+                    <td>recycle1@gmail.com</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-secondary btn-sm">Copy</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <label>With selected:</label>
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-secondary">Copy</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#checkAll').click(function(){
+                $('.checkItem').prop('checked', $(this).prop('checked'));
+            });
+        });
+    </script>
+</body>
+</html>

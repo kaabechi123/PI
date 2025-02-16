@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer la société de recyclage{% endblock %}
+
+{% block body %}
+    <h1>Éditer la société de recyclage</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        <button type="submit">Mettre à jour</button>
+    {{ form_end(form) }}
+{% endblock %}
