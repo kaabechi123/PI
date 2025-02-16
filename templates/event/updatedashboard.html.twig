@@ -1,0 +1,47 @@
+{% extends 'dashboardbase.html.twig' %}
+
+{% block title %}Update Event{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Update Event</h4>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.name, 'Event Name', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.name) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.startDate, 'Start Date', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.startDate, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.startDate) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.endDate, 'End Date', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.endDate, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.endDate) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.location, 'Location', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.location, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.location) }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Update Event</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

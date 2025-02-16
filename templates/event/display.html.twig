@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-lg-12">
+    <div class="collections">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>Explore Our <em>Events</em>.</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-collection owl-carousel">
+                    {% for event in events %}
+                    <div class="item">
+                        <img src="{{ asset('assets/images/collection-01.jpg') }}" alt="{{ event.name }}">
+                        <div class="down-content">
+                            <h4>{{ event.name }}</h4>
+                            <span class="collection">Description:<br><strong>{{ event.description }}</strong></span>
+                            <span class="category">Location:<br><strong>{{ event.location }}</strong></span>
+                            <span class="category">Start Date:<br><strong>{{ event.startDate|date('Y-m-d H:i') }}</strong></span>
+                            <span class="category">End Date:<br><strong>{{ event.endDate|date('Y-m-d H:i') }}</strong></span>
+                            <div class="main-button" style="display: flex; justify-content: center; margin-top: 10px;">
+  <form method="post" action="{{ path('participate_event', {'eventId': event.id}) }}" style="width: 80%;">
+    <input type="hidden" name="token" value="{{ csrf_token('participate_event') }}">
+    <button type="submit" class="btn-main" 
+        style="cursor: pointer; display: block; text-align: center; padding: 12px 0; background: #28a745; color: #fff; border-radius: 5px; font-size: 16px; font-weight: bold; border: none; transition: all 0.3s ease-in-out; width: 100%;">
+        Participate
+    </button>
+</form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="item">
+                        <div class="down-content">
+                            <h4>No events found.</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

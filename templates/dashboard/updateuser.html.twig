@@ -1,0 +1,37 @@
+{% extends 'dashboardbase.html.twig' %}
+
+{% block title %}Update User{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Update User</h4>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.username, 'Username', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.role, 'Role', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.role, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                            {{ form_errors(form.role) }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Update</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

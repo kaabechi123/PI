@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Left Column: Profile Card -->
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0">
+                <div class="card-body text-center p-4">
+                    <!-- Profile Image -->
+                    <img src="{{ asset('images/profile_placeholder.png') }}" class="rounded-circle mb-3" alt="Profile Image" style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <h3 class="card-title mb-2 font-weight-bold" style="color: #28a745;">{{ user.username }}</h3>
+                    <p class="mb-0" style="color: #28a745;">{{ user.role }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: User Details and Profile Edit -->
+        <div class="col-md-8">
+            <!-- User Details and Edit Form -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4 font-weight-bold text-success">Profile Details</h4>
+                    <form method="POST" action="{{ path('app_profile_update') }}">
+                        <div class="row">
+                            <!-- Username -->
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                            </div>
+                            <!-- Email -->
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+                            </div>
+                            <!-- Password -->
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="******">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Organized Events -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4 font-weight-bold text-success">Organized Events</h4>
+                    {% if user.organizedEvents|length > 0 %}
+                        <ul class="list-group list-group-flush">
+                            {% for event in user.organizedEvents %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong style="color: #28a745;">{{ event.name }}</strong>
+                                        <small class="d-block" style="color: #28a745;">{{ event.startDate|date('Y-m-d H:i') }}</small>
+                                    </div>
+<span class="badge bg-success rounded-pill">Organizer</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="mb-0" style="color: #28a745;">No events organized.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Participated Events -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4 font-weight-bold text-success">Participated Events</h4>
+                    {% if user.participatedEvents|length > 0 %}
+                        <ul class="list-group list-group-flush">
+                            {% for event in user.participatedEvents %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong style="color: #28a745;">{{ event.name }}</strong>
+                                        <small class="d-block" style="color: #28a745;">{{ event.startDate|date('Y-m-d H:i') }}</small>
+                                    </div>
+                                    <span class="badge bg-success rounded-pill">Participant</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="mb-0" style="color: #28a745;">No events participated in.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Tickets Owned -->
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4 font-weight-bold text-success">Tickets Owned</h4>
+                    {% if user.tickets|length > 0 %}
+                        <ul class="list-group list-group-flush">
+                            {% for ticket in user.tickets %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong style="color: #28a745;">Ticket for: {{ ticket.event.name }}</strong>
+                                        <small class="d-block" style="color: #28a745;">{{ ticket.event.startDate|date('Y-m-d H:i') }}</small>
+                                    </div>
+<span class="badge bg-success rounded-pill">Ticket</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="mb-0" style="color: #28a745;">No tickets owned.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

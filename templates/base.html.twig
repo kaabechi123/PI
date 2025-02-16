@@ -7,11 +7,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Liberty NFT Marketplace - HTML CSS Template</title>
+    <title>ECO Tounsi</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
- <!--test -->
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-liberty-market.css') }}">
@@ -41,25 +41,34 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-<img src="{{ asset('assets/images/logo.png') }}" alt="">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="details.html">Item Details</a></li>
-                        <li><a href="author.html">Author</a></li>
-                        <li><a href="create.html">Create Yours</a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+               <nav class="main-nav">
+
+    <!-- ***** Logo Start ***** -->
+    <a href="/home" class="logo">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
+    </a>
+    <!-- ***** Logo End ***** -->
+
+    <!-- ***** Menu Start ***** -->
+    <ul class="nav">
+        <li><a href="/home" class="active">Home</a></li>
+        <li><a href="/event_display">Events</a></li>
+        <li><a href="/create_event">Create an event</a></li>
+        <li><a href="/profile">Profile</a></li>
+            <!-- ***** Logout Icon Start ***** -->
+    <a href="/logout" class="logout-icon">
+        <img src="{{ asset('images/logout.png') }}" alt="Logout">
+    </a>
+    <!-- ***** Logout Icon End ***** -->
+
+    </ul>   
+
+    <a class='menu-trigger'>
+        <span>Menu</span>
+    </a>
+    <!-- ***** Menu End ***** -->
+</nav>
+
             </div>
         </div>
     </div>

@@ -27,6 +27,7 @@ class AppAuthenticator extends AbstractAuthenticator
 
     public function supports(Request $request): ?bool
     {
+        
         // Log the route and method to verify the request is being handled correctly
         error_log("Checking if authentication is supported: " . $request->attributes->get('_route') . " | Method: " . $request->getMethod());
 
@@ -80,11 +81,11 @@ class AppAuthenticator extends AbstractAuthenticator
         // Check user role and determine the target route based on that
         $user = $token->getUser();
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
-            $targetPath = 'admin_dashboard'; // For example, redirect to admin dashboard
+            $targetPath = 'dashboard'; // For example, redirect to admin dashboard
         } elseif (in_array('ROLE_ORGANISATION', $user->getRoles())) {
-            $targetPath = 'organisation_dashboard'; // Redirect to organisation dashboard
+            $targetPath = 'org'; // Redirect to organisation dashboard
         } elseif (in_array('ROLE_DELIVERY', $user->getRoles())) {
-            $targetPath = 'delivery_dashboard'; // Redirect to delivery dashboard
+            $targetPath = 'delivery'; // Redirect to delivery dashboard
         } elseif (in_array('ROLE_CLIENT', $user->getRoles())) {
             $targetPath = 'home'; // Redirect to home for clients
         } else {

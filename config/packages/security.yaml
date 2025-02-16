@@ -24,8 +24,8 @@ security:
                 username_parameter: email
                 password_parameter: password
             logout:
-                path: logout
-                target: login  # Redirect to login after logout
+                path: /logout
+                target: /login  # Redirect to login after logout
             custom_authenticator: App\Security\AppAuthenticator
 
 
@@ -33,8 +33,8 @@ security:
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }  # Login is accessible to everyone
         - { path: ^/signup, roles: PUBLIC_ACCESS }  # Login is accessible to everyone
-        - { path: ^/admin, roles: ROLE_ADMIN }     # Admins can access /admin
-        - { path: ^/organisation, roles: ROLE_ORGANISATION } # Managers can access /organisation
+        - { path: ^/dashboard, roles: ROLE_ADMIN }     # Admins can access /admin
+        - { path: ^/org, roles: ROLE_ORGANISATION } # Managers can access /organisation
         - { path: ^/home, roles: ROLE_CLIENT }  # Users can access /home
         - { path: ^/delivery, roles: ROLE_DELIVERY }          # can acces /
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY } # Force login for everything else

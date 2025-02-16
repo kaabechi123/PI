@@ -1,0 +1,94 @@
+{% extends 'dashboardbase.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-home"></i>
+            </span> Users
+        </h3>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> Username </th>
+                                    <th> Email </th>
+                                    <th> Role </th>
+                                    <th> Delete </th>
+                                    <th> Update </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>
+                                            <img src="{{ asset('assets/images/faces/face1.jpg') }}" class="me-2" alt="image"> 
+                                            {{ user.username }}
+                                        </td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                      <label class="badge badge-gradient-success">{{ user.role }}</label>
+
+                                        </td>
+                                        <td>
+                                            <a onclick="showDeleteModal('{{ user.username }}', {{ user.id }})" class="badge badge-gradient-danger">Delete</a>
+                                        </td>
+                                 <td>
+                                        <a href="{{ path('updateuser', {id: user.id}) }}" class="badge badge-gradient-info">Update</a>
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteMessage"></p>
+                </div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" onclick="closeModal()">No</button>
+    <button type="button" id="confirmDeleteButton" class="btn btn-danger">Yes, Delete</button>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    function showDeleteModal(username, userId) {
+        // Set the message in the modal
+        document.getElementById('deleteMessage').innerText = `Deleting ${username} will also delete all data related to them. Are you sure you want to delete ${username}?`;
+
+        // Show the modal
+        $('#deleteModal').modal('show');
+
+        // Set up the "Yes" button to delete the user
+        document.getElementById('confirmDeleteButton').onclick = function() {
+            window.location.href = `/dashboard/users/delete/${userId}`;
+        };
+    }
+
+    function closeModal() {
+        $('#deleteModal').modal('hide');
+    }
+</script>
+{% endblock %}

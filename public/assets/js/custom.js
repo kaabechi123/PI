@@ -70,7 +70,7 @@
 	});
 
 	$('.owl-features').owlCarousel({
-		items:3,
+		items:15,
 		loop:true,
 		dots: false,
 		nav: true,
@@ -88,32 +88,75 @@
 			  },
 			  1800:{
 				items:4
+			},
+			2000:{
+				items:5
+			},
+			2800:{
+				items:6
+			},
+			3000:{
+				items:7
+			},
+			3800:{
+				items:8
+			},
+			4000:{
+				items:9
+			},
+			4800:{
+				items:10
+			},
+			5000:{
+				items:11
+			},
+			5800:{
+				items:12
+			},
+			6000:{
+				items:13
+			},
+			7800:{
+				items:14
+			},
+			8000:{
+				items:15
 			}
+			
 		}
 	})
 
 	$('.owl-collection').owlCarousel({
-		items:3,
-		loop:true,
+		loop: true,
 		dots: false,
 		nav: true,
 		autoplay: true,
-		margin:30,
-		responsive:{
-			  0:{
-				  items:1
-			  },
-			  800:{
-				  items:2
-			  },
-			  1000:{
-				  items:3
-			}
+		margin: 30,
+		responsive: {
+			0: {
+				items: 1
+			},
+			800: {
+				items: 2
+			},
+			1000: {
+				items: 3
+			},
+			1400: {  // Allow more items on larger screens
+				items: 4
+			},
+			1400: {  // Allow more items on larger screens
+				items: 5
+			},
+			1800: {  // Even more for extra-large screens
+				items: 6
+			},
 		}
-	})
+	});
+	
 
 	$('.owl-banner').owlCarousel({
-		items:1,
+		items:15,
 		loop:true,
 		dots: false,
 		nav: true,

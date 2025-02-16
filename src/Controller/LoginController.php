@@ -45,5 +45,4 @@ final class LoginController extends AbstractController
         ]);
     }
 
-
 }
