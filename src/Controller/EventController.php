@@ -42,11 +42,44 @@ final class EventController extends AbstractController
             $this->addFlash('success', 'Event created successfully!');
     
             // Redirect to the events page
-            return $this->redirectToRoute('event_display');
+            return $this->redirectToRoute('create_event');
         }
     
         // Render the form template
         return $this->render('event/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/create_event2', name: 'create_event2', methods: ['GET', 'POST'])]
+    public function index2(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Create a new Event object
+        $event = new Event();
+    
+        // Get the current logged-in user (the organizer)
+        $user = $this->getUser();
+        $event->setOrganizer($user);
+    
+        // Create the form
+        $form = $this->createForm(AddEventFormType::class, $event);
+    
+        // Handle form submission
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Save the event to the database
+            $entityManager->persist($event);
+            $entityManager->flush();
+    
+            // Add a success flash message
+            $this->addFlash('success', 'Event created successfully!');
+    
+            // Redirect to the events page
+            return $this->redirectToRoute('create_event2');
+        }
+    
+        // Render the form template
+        return $this->render('event/createorg.html.twig', [
             'form' => $form->createView(),
         ]);
     }
