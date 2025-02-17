@@ -70,61 +70,32 @@
 	});
 
 	$('.owl-features').owlCarousel({
-		items:15,
 		loop:true,
 		dots: false,
 		nav: true,
 		autoplay: true,
 		margin:30,
-		responsive:{
-			  0:{
-				  items:1
-			  },
-			  800:{
-				  items:2
-			  },
-			  1000:{
-				  items:3
-			  },
-			  1800:{
-				items:4
+		responsive: {
+			0: {
+				items: 1
 			},
-			2000:{
-				items:5
+			800: {
+				items: 2
 			},
-			2800:{
-				items:6
+			1000: {
+				items: 3
 			},
-			3000:{
-				items:7
+			1400: {  // Allow more items on larger screens
+				items: 4
 			},
-			3800:{
-				items:8
-			},
-			4000:{
-				items:9
-			},
-			4800:{
-				items:10
-			},
-			5000:{
-				items:11
-			},
-			5800:{
-				items:12
-			},
-			6000:{
-				items:13
-			},
-			7800:{
-				items:14
-			},
-			8000:{
-				items:15
+			1400: {  // Allow more items on larger screens
+				items: 5
 			}
+
+		}
 			
 		}
-	})
+	)
 
 	$('.owl-collection').owlCarousel({
 		loop: true,
@@ -156,7 +127,6 @@
 	
 
 	$('.owl-banner').owlCarousel({
-		items:15,
 		loop:true,
 		dots: false,
 		nav: true,
@@ -167,10 +137,10 @@
 				  items:1
 			  },
 			  600:{
-				  items:1
+				  items:2
 			  },
 			  1000:{
-				  items:1
+				  items:3
 			}
 		}
 	})
